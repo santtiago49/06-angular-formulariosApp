@@ -8,6 +8,10 @@ const routes: Routes = [
   },
   { path: 'reactive',
     loadChildren: () => import('./reactive/reactive.module').then( m => m.ReactiveModule )
+  },
+  {
+    path: '**',
+    redirectTo: 'template/basicos'
   }
 ];
 
