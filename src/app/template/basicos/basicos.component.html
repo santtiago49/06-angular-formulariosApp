@@ -1,1 +1,74 @@
-<p>basicos works!</p>
+<h2>Template: Básicos</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+
+        <form (ngSubmit)="guardar( miFormulario )" 
+              #miFormulario="ngForm"
+              autocomplete="off">
+
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Producto</label>
+                <div class="col-sm-9">
+                    <input  type="text" 
+                            class="form-control"
+                            ngModel
+                            name="producto"
+                            required
+                            placeholder="Nombre del producto">
+                    <span class="form-text text-danger">Debe tener al menos 3 caracteres</span>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Precio</label>
+                <div class="col-sm-9">
+                    <input  type="number" 
+                            class="form-control" 
+                            ngModel
+                            required
+                            name="precio"
+                            placeholder="Precio del producto">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Existecias</label>
+                <div class="col-sm-9">
+                    <input type="number" 
+                            class="form-control" 
+                            ngModel
+                            name="existencias"
+                            placeholder="Existecias del producto">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="submit"
+                            class="btn btn-primary float-end">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+
+
+        </form>
+
+        <div class="row">
+            <div class="col">
+                <span>Valid: {{ miFormulario.valid }}</span>
+                <br>
+                <span>Value: 
+                </span>
+                <pre>{{ miFormulario.value | json }}</pre> 
+                    
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
