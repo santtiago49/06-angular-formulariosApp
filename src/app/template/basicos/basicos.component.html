@@ -17,8 +17,18 @@
                             ngModel
                             name="producto"
                             required
+                            minlength="3"
                             placeholder="Nombre del producto">
-                    <span class="form-text text-danger">Debe tener al menos 3 caracteres</span>
+
+
+                    <span   class="form-text text-danger"
+                            *ngIf="miFormulario.controls.producto?.invalid &&
+                                   miFormulario.controls.producto?.touched">
+                        Debe tener al menos 3 caracteres
+                    </span>
+
+
+                    
                 </div>
             </div>
 
@@ -30,7 +40,15 @@
                             ngModel
                             required
                             name="precio"
-                            placeholder="Precio del producto">
+                            placeholder="Precio del producto"
+                            min="0">
+
+                    <!-- <span class="form-text text-danger" 
+                          *ngIf="miFormulario.controls.precio?.invalid &&
+                                 miFormulario.controls.precio?.touched ">
+                        Coloque un precio
+                    </span> -->
+                    
                 </div>
             </div>
 
@@ -59,10 +77,17 @@
 
         <div class="row">
             <div class="col">
-                <span>Valid: {{ miFormulario.valid }}</span>
-                <br>
-                <span>Value: 
-                </span>
+
+                <span>Valid: </span>
+                <pre>{{ miFormulario.valid }}</pre>
+                
+                <span>Pristine: </span>
+                <pre>{{ miFormulario.pristine }}</pre>
+
+                <span>Touched: </span>
+                <pre>{{ miFormulario.touched }}</pre>
+
+                <span>Value: </span>
                 <pre>{{ miFormulario.value | json }}</pre> 
                     
 
