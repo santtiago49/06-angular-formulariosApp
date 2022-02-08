@@ -18,7 +18,11 @@ export class BasicosComponent implements OnInit {
 
   guardar(){
     // console.log(this.miFormulario);
-    this.miFormulario.resetForm()
+    this.miFormulario.resetForm({
+      producto: '',
+      precio: '',
+      existencias: ''
+    })
   }
 
   nombreValido():boolean{
