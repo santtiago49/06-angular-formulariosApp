@@ -1,1 +1,73 @@
-<p>dinamicos works!</p>
+<h2>Template: <small>Dinámicos</small></h2>
+<hr>
+
+
+<form (ngSubmit)="guardar( miFormulario )" 
+      #miFormulario="ngForm"
+      autocomplete="off">
+
+
+    <!-- Nombre -->
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Nombre:</label>
+        <div class="col-sm-10">
+            <input class="form-control"
+                   required
+                   ngModel
+                   name="nombre"
+                   minlength="1"
+                   placeholder="Nombre de la persona">
+
+            <span class="form-text text-danger"
+                  *ngIf="miFormulario.controls?.nombre?.errors && 
+                         miFormulario.controls?.nombre?.touched">
+                         Este campo es obligatorio
+            </span>
+        </div>
+    </div>
+
+    <!-- Agregar -->
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Agregar:</label>
+        <div class="col-sm-10">
+
+            <div class="input-group">
+                <input class="form-control"
+                       placeholder="Agregar favorito">
+                <button class="btn btn-outline-primary">
+                    Agregar
+                </button>
+            </div>
+            
+
+        </div>
+    </div>
+
+    <!-- Favoritos -->
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Favoritos:</label>
+        <div class="col-sm-10">
+
+                <input class="form-control mb-1">            
+                <input class="form-control mb-1">            
+                <input class="form-control mb-1">            
+                <input class="form-control mb-1">            
+                <input class="form-control mb-1">            
+
+
+        </div>
+    </div>
+
+
+
+    <div class="col-sm-12">
+        <button class="btn btn-primary float-end"
+                type="button"
+                [disabled]="miFormulario.invalid"
+                (click)="guardar( miFormulario )">
+                Guardar
+        </button>
+    </div>
+
+
+</form>
