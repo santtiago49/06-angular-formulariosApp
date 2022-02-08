@@ -54,10 +54,11 @@
 
             <div class="input-group mb-1"
                  *ngFor="let juego of persona.favorito; let i = index">
-                <input  [(ngModel)]="juego.nombre"
+                 <input class="form-control" 
+                        [(ngModel)]="juego.nombre"
+                        (keyup.enter)="agregar()"
                         [name]="'favorito_'+ i"
-                        required
-                        class="form-control">
+                        required>
                 
                 <button (click)="eliminar( i )" 
                     class="btn btn-outline-danger">
