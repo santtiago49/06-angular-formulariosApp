@@ -1,5 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+
+interface Persona {
+  nombre: string;
+  favorito: Favorito[];
+}
+
+interface Favorito {
+  id: number;
+  nombre: string;
+}
+
 
 @Component({
   selector: 'app-dinamicos',
@@ -7,12 +18,23 @@ import { NgForm } from '@angular/forms';
   styles: [
   ]
 })
-export class DinamicosComponent implements OnInit {
+export class DinamicosComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  persona: Persona = {
+    nombre: 'Santiago',
+    favorito: [
+      {
+        id: 1,
+        nombre: 'Metal Gear'
+      },
+      {
+        id: 2,
+        nombre: 'Mario Bros Super'
+      }
+    ]
   }
+
+
 
   guardar(miFormulario: NgForm ){
     console.log( miFormulario.controls.nombre.value );
