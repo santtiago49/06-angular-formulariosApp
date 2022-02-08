@@ -20,6 +20,8 @@ interface Favorito {
 })
 export class DinamicosComponent {
 
+  nuevoJuego: string = '';
+
   persona: Persona = {
     nombre: 'Santiago',
     favorito: [
@@ -34,16 +36,23 @@ export class DinamicosComponent {
     ]
   }
 
-
-
-  guardar(miFormulario: NgForm ){
-    console.log( miFormulario.controls.nombre.value );
-
-    miFormulario.resetForm({
-      nombre: ''
-    })
+  guardar(){
 
   }
 
+  agregar(){
+
+    const nuevoFavorito: Favorito = {
+      id: this.persona.favorito.length + 1,
+      nombre: this.nuevoJuego,
+    }
+    
+    this.persona.favorito.push( {...nuevoFavorito} );
+  }
+
+
+  eliminar( index: number ){
+    this.persona.favorito.splice( index, 1);
+  }
 
 }
