@@ -1,1 +1,69 @@
-<p>dinamicos works!</p>
+<h2>Reactivos: <small>Dinámicos</small></h2>
+<hr>
+
+
+<form autocomplete="off">
+
+    <!-- Nombre -->
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Nombre:</label>
+        <div class="col-sm-10">
+            <input class="form-control"
+                   placeholder="Nombre de la persona">
+
+            <span class="form-text text-danger">
+                Este campo es obligatorio
+            </span>
+        </div>
+    </div>
+
+    <!-- Agregar -->
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Agregar:</label>
+        <div class="col-sm-10">
+
+            <div class="input-group">
+                <input class="form-control"
+                       placeholder="Agregar favorito">
+
+                <button class="btn btn-outline-primary">
+                    Agregar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Favoritos -->
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Favoritos:</label>
+        <div class="col-sm-10">
+            <!-- <div class="input-group mb-1"
+                 *ngFor="let juego of persona.favorito; let i = index">
+                 <input class="form-control" 
+                        [(ngModel)]="juego.nombre"
+                        (keyup.enter)="agregar()"
+                        [name]="'favorito_'+ i"
+                        required>
+                
+                <button (click)="eliminar( i )" 
+                    class="btn btn-outline-danger">
+                    Eliminar
+                </button>
+            </div> -->
+        </div>
+    </div>
+
+
+
+    <div class="col-sm-12">
+        <button class="btn btn-primary float-end"
+                type="button">
+                Guardar
+        </button>
+    </div>
+
+
+</form>
+
+<!-- <span>Form Persona</span>
+<pre>{{ persona.favorito | json }}</pre> -->
