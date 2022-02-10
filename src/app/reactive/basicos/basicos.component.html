@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col">
 
-        <form autocomplete="off" [formGroup]="miFormulario">
+        <form (ngSubmit)="guardar()" autocomplete="off" [formGroup]="miFormulario">
 
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Producto</label>
@@ -14,7 +14,8 @@
                            class="form-control"
                            placeholder="Nombre del producto">
 
-                    <span class="form-text text-danger">
+                    <span class="form-text text-danger"
+                          *ngIf="campoEsvalido('nombre')">
                         Debe tener al menos 3 caracteres
                     </span>
                 </div>
@@ -28,21 +29,23 @@
                            formControlName="precio"
                            placeholder="Precio del producto">
 
-                    <span class="form-text text-danger">
+                    <span class="form-text text-danger"
+                          *ngIf="campoEsvalido('precio')">
                         El precio debe ser 0 o mayor
                     </span>                   
                 </div>
             </div>
 
             <div class="mb-3 row">
-                <label class="col-sm-3 col-form-label">Existecias</label>
+                <label class="col-sm-3 col-form-label">Existencias</label>
                 <div class="col-sm-9">
                     <input type="number" 
                            class="form-control" 
                            formControlName="existencias"
                            placeholder="Existecias del producto">
 
-                    <span class="form-text text-danger">
+                    <span class="form-text text-danger"
+                          *ngIf="campoEsvalido('existencias')">
                         Deben haber por lo menos 10 unidades
                     </span>
                 </div>
@@ -73,6 +76,8 @@
                 <span>Value: </span>
                 <pre>{{ miFormulario.value | json }}</pre> 
                     
+                <span>Campo existencias: </span>
+                <pre>{{ miFormulario.controls.existencias.errors | json }}</pre> 
 
             </div>
         </div>
