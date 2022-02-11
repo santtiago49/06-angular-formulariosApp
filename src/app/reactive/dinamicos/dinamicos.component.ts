@@ -30,7 +30,9 @@ export class DinamicosComponent {
     this.nuevoFavorito.reset()
   }
 
-  
+  eliminarFavorito(i: number) {
+    this.favoritosArr.removeAt(i);
+  }  
 
   constructor( private fb: FormBuilder ) { }
 
