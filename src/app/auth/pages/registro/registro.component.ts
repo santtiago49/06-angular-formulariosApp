@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators, Validator } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators, Validator, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-registro',
@@ -15,8 +15,23 @@ export class RegistroComponent implements OnInit {
 
   miFormulario: FormGroup = this.fb.group({
     nombre: ['', [ Validators.required, Validators.pattern( this.nombreApellidoPattern ) ] ],
-    email: ['', [ Validators.required, Validators.pattern( this.emailPattern ) ] ]
+    email: ['', [ Validators.required, Validators.pattern( this.emailPattern ) ] ],
+    username: ['', [ Validators.required, this.noPuedeSerSanti ] ]
   })
+
+  noPuedeSerSanti(control: FormControl){
+    const valor: string = control.value?.trim().toLowerCase()
+
+    if( valor === 'santi'){
+      return {
+        esSanti: true
+      }
+    } 
+    else {
+      return null
+    }
+
+  }
 
   constructor( private fb: FormBuilder ) { }
 
@@ -24,7 +39,8 @@ export class RegistroComponent implements OnInit {
 
     this.miFormulario.reset({
       nombre: 'Santiago Gomez',
-      email: 'test1@test1.com'
+      email: 'test1@test1.com',
+      username: 'santiegomez1'
     })
     
   }
