@@ -21,6 +21,19 @@ export class RegistroComponent implements OnInit {
     validators: [ this.vs.camposIguales('password', 'password2') ]
   })
 
+
+  get errorEmailMsg(): string{
+    const email = this.miFormulario.get('email')?.errors;
+    if( email?.required ){
+      return 'El correo es obligatorio';
+    } else if ( email?.pattern ) {
+      return 'Debe ingresar un correo electrónico';
+    } else if ( email?.emailTomado ) {
+      return 'Este correo ya esta utilizado';
+    }
+    return '';
+  }
+
   constructor( private fb: FormBuilder,
                private vs: ValidatorService,
                private emailValidator: EmailValidatorService) { }
@@ -29,34 +42,17 @@ export class RegistroComponent implements OnInit {
 
     this.miFormulario.reset({
       nombre: 'Santiago Gomez',
-      email: 'test1@test1.com',
+      email: 'test1@test.com',
       username: 'santiegomez1',
       password: 'aoeaoe',
       password2: 'aoeaoe'
-    })
-    
+    }) 
   }
 
   campoNoValido( campo: string ){
     return this.miFormulario.get(campo)?.invalid &&
            this.miFormulario.get(campo)?.touched
-  }
-
-  emailRequired(){
-    return this.miFormulario.get('email')?.errors?.required &&
-           this.miFormulario.get('email')?.touched
-  }
-
-  emailFormato(){
-    return this.miFormulario.get('email')?.errors?.pattern &&
-           this.miFormulario.get('email')?.touched
-  }
-
-  emailUsado(){
-    return this.miFormulario.get('email')?.errors?.emailTomado &&
-           this.miFormulario.get('email')?.touched
-  }
-
+  }  
 
   submitFormulario(){
     console.log(this.miFormulario.value);
