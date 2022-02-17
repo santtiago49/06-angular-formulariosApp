@@ -6,8 +6,9 @@ import { AbstractControl, FormControl, ValidationErrors } from '@angular/forms';
 })
 export class ValidatorService {
 
-  nombreApellidoPattern: string  = '([a-zA-z]+) ([a-zA-z]+)';
-  emailPattern         : string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
+  nombreApellidoPattern: string = '([a-zA-z]+) ([a-zA-z]+)';
+  emailPattern         : string = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
+  passwordPattern      : string = '(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$';
 
   constructor() { }
 
