@@ -33,8 +33,18 @@
                            placeholder="Email del usuario">
                     
                     <span class="form-text text-danger"
-                          *ngIf="campoNoValido('email')">
+                          *ngIf="emailRequired()">
                         El correo es obligatorio
+                    </span>
+
+                    <span class="form-text text-danger"
+                          *ngIf="emailFormato()">
+                        Debe ingresar un correo electrónico
+                    </span>
+
+                    <span class="form-text text-danger"
+                          *ngIf="emailUsado()">
+                        Este correo electrónico ya está en uso
                     </span>
                 </div>
             </div>
